@@ -103,7 +103,7 @@ export function ftrace(functionId, accepted_visibility, files) {
       },
 
       'ContractDefinition:exit': function(node) {
-        contractName = null 
+        contractName = null
         tempUserDefinedStateVars = {}
       },
 
@@ -281,7 +281,7 @@ export function ftrace(functionId, accepted_visibility, files) {
   function modifierCalls(modifierName, contractName) {
     if (dependencies.hasOwnProperty(contractName)) {
       for (let dep of dependencies[contractName]) {
-        if (functionCallsTree[dep].hasOwnProperty(modifierName)) {
+        if (functionCallsTree.hasOwnProperty(dep) && functionCallsTree[dep].hasOwnProperty(modifierName)) {
           return functionCallsTree[dep][modifierName]
         }
       }
